@@ -32,18 +32,11 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-
-- task: NuGetCommand@2
-  inputs:
-    command: 'restore'
-    restoreSolution: '**/*.sln'
-    feedsToUse: 'select'
-    vstsFeed: '2b40aac7-1558-4448-93b5-794b9c695f14/9bf27958-dead-4454-9d8f-b1a528d8a1be'
 - task: NuGetCommand@2
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
-    versioningScheme: 'byBuildNumber'
+    versioningScheme: 'off'
 - task: NuGetCommand@2
   inputs:
     command: 'push'
